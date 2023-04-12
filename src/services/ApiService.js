@@ -1,16 +1,17 @@
+import config from '../config.json'
+
 class ApiService {
     static config = null;
 
   constructor() {
     if (!ApiService.config) {
-      const fs = require('fs');
-      ApiService.config = JSON.parse(fs.readFileSync('./config.json'));
+      ApiService.config = JSON.parse(config);
     }
 
     const { apiUrl } = ApiService.config || {};
     this.baseUrl = apiUrl || 'http://localhost:4010/';
     this.headers = {};
-    this.authToken = authToken || null;
+    this.authToken = null;
   }
   
     async request(method, url, data = null, headers = {}) {

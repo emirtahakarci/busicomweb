@@ -1,56 +1,59 @@
-import axios from 'axios'
+import ApiService from '@/services/ApiService'
 
 const state = {
-  token: localStorage.getItem('token') || null,
-  user: JSON.parse(localStorage.getItem('user')) || null
+  user: null,
+  token: localStorage.getItem('token') || null
 }
 
 const getters = {
-  isLoggedIn: state => !!state.token,
-  user: state => state.user
+  isAuthenticated(state) {
+    return state.token !== null && state.user !== null
+  }
 }
 
 const mutations = {
-  setToken(state, token) {
-    state.token = token
-  },
   setUser(state, user) {
     state.user = user
+  },
+
+  setToken(state, token) {
+    state.token = token
+    localStorage.setItem('token', token)
+  },
+
+  logout(state) {
+    state.user = null
+    state.token = null
+    localStorage.removeItem('token')
   }
 }
 
 const actions = {
-  login({ commit }, credentials) {
-    return new Promise((resolve, reject) => {
-      axios.post('/auth/login', credentials)
-        .then(response => {
-          const token = response.data.access_token
-          const user = response.data.user
-          localStorage.setItem('token', token)
-          localStorage.setItem('user', JSON.stringify(user))
-          commit('setToken', token)
-          commit('setUser', user)
-          resolve(response)
-        })
-        .catch(error => {
-          localStorage.removeItem('token')
-          localStorage.removeItem('user')
-          reject(error)
-        })
-    })
+  async login({ commit }, credentials) {
+    const response = await ApiService.post('/auth/login', credentials)
+
+    commit('setUser', response.user)
+    commit('setToken', response.token)
+
+    return response
   },
-  logout({ commit }) {
-    return new Promise((resolve) => {
-      localStorage.removeItem('token')
-      localStorage.removeItem('user')
-      commit('setToken', null)
-      commit('setUser', null)
-      resolve()
-    })
+
+  async logout({ commit }) {
+    await ApiService.post('/auth/logout')
+
+    commit('logout')
+  },
+
+  async refresh({ commit, state }) {
+    const response = await ApiService.post('/auth/refresh', { token: state.token })
+
+    commit('setUser', response.user)
+    commit('setToken', response.token)
   }
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,
