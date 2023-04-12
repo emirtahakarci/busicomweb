@@ -3,7 +3,7 @@ class ApiService {
 
     constructor() {
         if (!ApiService.config) {
-            const response = fetch('data.json');
+            const response = fetch('../config.json');
             const data = response.json();
             ApiService.config = JSON.parse(data);
         }
