@@ -1,27 +1,31 @@
-import axios from 'axios';
+import ApiService from './ApiService'
 
-const WorkerService = {
-  init(baseURL) {
-    axios.defaults.baseURL = baseURL;
-  },
-
-  get(resource, slug = '') {
-    return axios.get(`${resource}/${slug}`).catch(error => {
-      throw new Error(`[WorkerService] Get ${resource} ${slug} ${error}`);
-    });
-  },
-
-  post(resource, params) {
-    return axios.post(`${resource}`, params);
-  },
-
-  update(resource, slug, params) {
-    return axios.put(`${resource}/${slug}`, params);
-  },
-
-  delete(resource, slug) {
-    return axios.delete(`${resource}/${slug}`);
+class WorkerService {
+  constructor() {
+    this.endpoint = 'workers'
   }
-};
 
-export default WorkerService;
+  async getAllWorkers() {
+    const response = await ApiService.get(this.endpoint)
+    return response
+  }
+
+  async createWorker(workerData) {
+    const response = await ApiService.post(this.endpoint, workerData)
+    return response
+  }
+
+  async updateWorker(workerId, workerData) {
+    const url = `${this.endpoint}/${workerId}`
+    const response = await ApiService.put(url, workerData)
+    return response
+  }
+
+  async deleteWorker(workerId) {
+    const url = `${this.endpoint}/${workerId}`
+    const response = await ApiService.delete(url)
+    return response
+  }
+}
+
+export default new WorkerService()
