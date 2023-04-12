@@ -1,11 +1,11 @@
+import config from '../config.json'
+
 class ApiService {
     static config = null;
 
     constructor() {
         if (!ApiService.config) {
-            const response = fetch('../config.json');
-            const data = response.json();
-            ApiService.config = JSON.parse(data);
+            ApiService.config = config;
         }
 
         const { apiUrl } = ApiService.config || {};
