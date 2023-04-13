@@ -1,25 +1,38 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-      <div class="container">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark mb-3">
+      <div class="container ">
         <router-link class="navbar-brand" to="/">My App</router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse  " id="navbarNav">
+          <ul class="navbar-nav ">
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
+              <router-link class="nav-link" to="/">Dashboard</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
+              <router-link class="nav-link" to="/">Personeller</router-link>
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">Yorumlarım</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">Hakkımızda</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">Profil</router-link>
+
+            </li>
+            
           </ul>
+          
         </div>
       </div>
     </nav>
     <div class="container">
+      
       <router-view></router-view>
     </div>
     <footer class="bg-light py-3">
