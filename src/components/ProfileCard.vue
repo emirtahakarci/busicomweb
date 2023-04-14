@@ -1,26 +1,69 @@
 <template>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ user.name }}</h5>
-        <p class="card-text">{{ user.email }}</p>
-        <router-link class="btn btn-primary" :to="{ name: 'EditProfile' }">Edit Profile</router-link>
+  <section class="pb-5 position-relative bg-dark mx-n3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 text-start mb-5 mt-5">
+          <h3 class="text-white z-index-1 position-relative">Ekip Arkadaşlarınızdan Bazıları</h3>
+          <p class="text-white opacity-8 mb-0">Beraber çalışmış olduğunuz ekip arkadaşlarınızı ziyaret edebilirsiniz.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-12" v-for="(member, index) in members" :key="index">
+          <div class="card card-profile mt-4 bg-secondary">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-12 mt-n5">
+                <a href="javascript:;">
+                  <div class="p-3 pe-md-0">
+                    <img class="w-100 border-radius-md shadow-lg" :src="member.image" :alt="member.name">
+                  </div>
+                </a>
+              </div>
+              <div class="col-lg-8 col-md-6 col-12 my-auto">
+                <div class="card-body ps-lg-0">
+                  <h5 class="mb-0 text-white">{{ member.name }}</h5>
+                  <h6 class="text-info">{{ member.title }}</h6>
+                  <p class="mb-0 text-white">{{ member.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'ProfileCard',
-    props: {
-      user: {
-        type: Object,
-        required: true
-      }
-    }
-  }
-  </script>
-  
-  <style>
-  /* Add any custom CSS styles here */
-  </style>
-  
+  </section>
+</template>
+<script>
+export default {
+  name: "DefaultCard",
+  data() {
+    return {
+      members: [
+        {
+          name: "Emma Roberts",
+          title: "UI Designer",
+          description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
+          image: "https://picsum.photos/200/200?random=1",
+        },
+        {
+          name: "William Pearce",
+          title: "Boss",
+          description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
+          image: "https://picsum.photos/200/200?random=2",
+        },
+        {
+          name: "Ivana Flow",
+          title: "Athlete",
+          description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
+          image: "https://picsum.photos/200/200?random=3",
+        },
+        {
+          name: "Marquez Garcia",
+          title: "JS Developer",
+          description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
+          image: "https://picsum.photos/200/200?random=4",
+        },
+      ],
+    };
+  },
+};
+</script>
