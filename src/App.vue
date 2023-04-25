@@ -13,7 +13,7 @@
               <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Personeller</router-link>
+              <router-link class="nav-link" to="/employees">Personeller</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/">Yorumlarım</router-link>
