@@ -20,7 +20,11 @@
             <div class="card-body text-center">
               <h5 class="font-weight-normal text-dark">{{ card.name }}</h5>
               <p class="mb-0">{{ card.description }}</p>
-              <button type="button" class="btn btn-sm btn-secondary mb-0 mt-3">{{ card.job }}</button>
+              <router-link to="/empprofile" custom v-slot="{ navigate }">
+                <button class="btn btn-sm btn-secondary mb-0 mt-3" @click="navigate" role="link">
+                  {{ card.job }}
+                </button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -29,6 +33,7 @@
   </div>
 </template>
 <script>
+
 export default {
   data() {
     return {

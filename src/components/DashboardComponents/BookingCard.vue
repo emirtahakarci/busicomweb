@@ -11,7 +11,7 @@
                             </div>
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Şirkette Yapılan Toplam Yorum Sayısı</p>
-                                <h4 class="mb-0">{{ totalCommentCount  }}</h4>
+                                <h4 class="mb-0">{{ totalCommentCount }}</h4>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Size yapılan Toplam yorum sayısı</p>
-                                <h4 class="mb-0">{{ totalCommentCountForYou  }}</h4>
+                                <h4 class="mb-0">{{ totalCommentCountForYou }}</h4>
                             </div>
                         </div>
                     </div>
@@ -75,21 +75,21 @@
 export default {
     name: "BookingCard",
     props: {
-        totalCommentCount : {
+        totalCommentCount: {
             type: Number,
             required: true,
         },
-        personelCount : {
+        personelCount: {
             type: Number,
             required: true,
         },
-        
-        totalCommentCountForYou : {
+
+        totalCommentCountForYou: {
             type: Number,
             required: true,
         },
-        
-        totalCommentCountByYou  : {
+
+        totalCommentCountByYou: {
             type: Number,
             required: true,
         },

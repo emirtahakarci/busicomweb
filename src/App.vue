@@ -16,13 +16,13 @@
               <router-link class="nav-link" to="/employees">Personeller</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Yorumlarım</router-link>
+              <router-link class="nav-link" to="/mycomments">Yorumlarım</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Hakkımızda</router-link>
+              <router-link class="nav-link" to="/aboutus">Hakkımızda</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Profil</router-link>
+              <router-link class="nav-link" to="/profile">Profil</router-link>
 
             </li>
             
