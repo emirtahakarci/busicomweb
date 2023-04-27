@@ -1,12 +1,25 @@
 <template>
-    <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <Bar id="my-bar-chart" :options="chartOptions" :data="chartData" />
 </template>
   
 <script>
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import {
+    Chart as ChartJS,
+    Title,
+    Tooltip,
+    Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale
+} from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend)
 
 export default {
     name: 'BarChart',
@@ -16,10 +29,10 @@ export default {
             chartData: {
                 labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
                 datasets: [{
-                    label:"veri seti 1",
+                    label: "veri seti 1",
                     data: [40, 20, 12, 40, 20, 12, 40, 20, 12, 40, 20, 12],
                     backgroundColor: "#f87979",
-                    fontcolor:"black",
+                    borderColor: '#ffffff',
                 }],
 
             },
