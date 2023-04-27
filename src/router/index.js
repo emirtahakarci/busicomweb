@@ -27,33 +27,21 @@ const routes = [
   {
     path: '/mycomments',
     name: 'mycomments',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/MycommentsView.vue')
   },
   {
     path: '/profile',
     name: 'profile',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/ProfileView.vue')
   },
   {
     path: '/aboutus',
     name: 'aboutus',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutusView.vue')
   },
   {
-    path: '/empprofile',
+    path: '/empprofile/:id',
     name: 'empprofile',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/EmpProfileView.vue')
   }
 

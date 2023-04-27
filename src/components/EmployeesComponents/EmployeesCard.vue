@@ -20,7 +20,7 @@
             <div class="card-body text-center">
               <h5 class="font-weight-normal text-dark">{{ card.name }}</h5>
               <p class="mb-0">{{ card.description }}</p>
-              <router-link to="/empprofile" custom v-slot="{ navigate }">
+              <router-link :to="{ name: 'empprofile', params: { id: card.id } }" custom v-slot="{ navigate }">
                 <button class="btn btn-sm btn-secondary mb-0 mt-3" @click="navigate" role="link">
                   {{ card.job }}
                 </button>

@@ -23,9 +23,8 @@
 import BarChart from "../ChartComponents/BarChart.vue";
 import LineChart from "../ChartComponents/LineChart.vue";
 
-
 export default {
   name: "GraphicsCard",
-  components: { BarChart,LineChart },
+  components: { BarChart, LineChart },
 };
 </script>
