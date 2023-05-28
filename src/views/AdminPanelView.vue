@@ -1,7 +1,10 @@
 <template>
-    <div class="container bg-light" style="opacity: 0.85">
-      <h1>Admin Panel</h1>
-      <p>Welcome to the admin panel!</p>
+    <div class="container bg-light mb-5 pb-5" style="opacity: 0.85">
+      <h1>Admin Panel Kullanıcı ekle sil</h1>
+  
+      <div class="form-group">
+        <input type="text" v-model="searchKeyword" class="form-control" placeholder="Search" @input="filterUsers">
+      </div>
   
       <table class="table">
         <thead>
@@ -14,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users" :key="user.id">
+          <tr v-for="user in filteredUsers" :key="user.id">
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
@@ -40,7 +43,7 @@
           <label for="password">Password:</label>
           <input type="password" id="password" v-model="newUser.password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-success">Create User</button>
+        <button type="submit" class="btn btn-success mt-2">Create User</button>
       </form>
   
       <form v-else @submit.prevent="updateUser">
@@ -63,60 +66,77 @@
   </template>
   
   <script>
-  export default {
-    name: 'App',
-    data() {
-      return {
-        users: [
-          { id: 1, name: 'John Doe', email: 'john@example.com', password: 'password123' },
-          { id: 2, name: 'Jane Smith', email: 'jane@example.com', password: 'securepass' },
-          { id: 3, name: 'Bob Johnson', email: 'bob@example.com', password: '123456' },
-        ],
-        newUser: { name: '', email: '', password: '' },
-        editingUserId: null,
-        editedUser: { name: '', email: '', password: '' }
-      };
-    },
-    methods: {
-      editUser(userId) {
-        console.log('Edit user:', userId);
-        this.editingUserId = userId;
-        const user = this.users.find(user => user.id === userId);
-        if (user) {
-          this.editedUser = { ...user };
+    export default {
+      name: 'App',
+      data() {
+        return {
+          users: [
+            { id: 1, name: 'John John  Doe', email: 'john@example.com', password: 'password123' },
+            { id: 2, name: 'Jane Smith', email: 'jane@example.com', password: 'securepass' },
+            { id: 3, name: 'Bob Johnson', email: 'bob@example.com', password: '123456' },
+          ],
+          newUser: { name: '', email: '', password: '' },
+          editingUserId: null,
+          editedUser: { name: '', email: '', password: '' },
+          searchKeyword: '',
+        };
+      },
+      computed: {
+        filteredUsers() {
+          if (this.searchKeyword) {
+            const keyword = this.searchKeyword.toLowerCase();
+            return this.users.filter(user =>
+              user.name.toLowerCase().includes(keyword) ||
+              user.email.toLowerCase().includes(keyword) ||
+              user.password.toLowerCase().includes(keyword)
+            );
+          } else {
+            return this.users;
+          }
         }
       },
-      deleteUser(userId) {
-        console.log('Delete user:', userId);
-        const index = this.users.findIndex(user => user.id === userId);
-        if (index !== -1) {
-          this.users.splice(index, 1);
-        }
-      },
-      createUser() {
-        console.log('Create user:', this.newUser);
-        const newUser = { ...this.newUser, id: this.users.length + 1 };
-        this.users.push(newUser);
-        this.newUser = { name: '', email: '', password: '' };
-      },
-      updateUser() {
-        console.log('Update user:', this.editedUser);
-        const index = this.users.findIndex(user => user.id === this.editingUserId);
-        if (index !== -1) {
-          this.users[index] = { ...this.editedUser };
+      methods: {
+        editUser(userId) {
+          console.log('Edit user:', userId);
+          this.editingUserId = userId;
+          const user = this.users.find(user => user.id === userId);
+          if (user) {
+            this.editedUser = { ...user };
+          }
+        },
+        deleteUser(userId) {
+          console.log('Delete user:', userId);
+          const index = this.users.findIndex(user => user.id === userId);
+          if (index !== -1) {
+            this.users.splice(index, 1);
+          }
+        },
+        createUser() {
+          console.log('Create user:', this.newUser);
+          const newUser = { ...this.newUser, id: this.users.length + 1 };
+          this.users.push(newUser);
+          this.newUser = { name: '', email: '', password: '' };
+        },
+        updateUser() {
+          console.log('Update user:', this.editedUser);
+          const index = this.users.findIndex(user => user.id === this.editingUserId);
+          if (index !== -1) {
+            this.users[index] = { ...this.editedUser };
+            this.editingUserId = null;
+            this.editedUser = { name: '', email: '', password: '' };
+          }
+        },
+        cancelEdit() {
           this.editingUserId = null;
           this.editedUser = { name: '', email: '', password: '' };
-        }
-      },
-      cancelEdit() {
-        this.editingUserId = null;
-        this.editedUser = { name: '', email: '', password: '' };
+        },
+        filterUsers() {
+          // Arama otomatik olarak computed özelliği güncelleyecektir
+        },
       }
-    }
-  };
+    };
   </script>
   
   <style>
   
   </style>
-  
