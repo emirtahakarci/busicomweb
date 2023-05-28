@@ -1,7 +1,9 @@
 <template>
+  <div class="bg-dark bg-opacity-75 m-auto">
   <graphics-card></graphics-card>
 <booking-card totalCommentCount="125" :personelCount="245" :totalCommentCountForYou="123" :totalCommentCountByYou="321" />
 <default-card></default-card>
+</div>
 </template>
   
   

@@ -1,6 +1,7 @@
 <template>
+   <div class="bg-dark bg-opacity-75 m-auto">
     <div>
-      <div class="about-us bg-light pt-5 pb-3">
+      <div class="about-us bg-opacity-75 bg-light pt-5 pb-3">
         <div class="container">
           <h2 class="text-center mb-4">Hakkımızda</h2>
           <div class="row">
@@ -93,6 +94,7 @@
 </div>
 
   </div>
+</div>
 </template>
 <script>
 export default {

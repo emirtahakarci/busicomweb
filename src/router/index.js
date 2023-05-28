@@ -43,6 +43,26 @@ const routes = [
     path: '/empprofile/:id',
     name: 'empprofile',
     component: () => import(/* webpackChunkName: "about" */ '../views/EmpProfileView.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
+  },
+  {
+    path: '/updatepassword',
+    name: 'updatepassword',
+    component: () => import(/* webpackChunkName: "about" */ '../views/UpdatePasswordView.vue')
+  },
+  {
+    path: '/makeacomment',
+    name: 'makeacomment',
+    component: () => import(/* webpackChunkName: "about" */ '../views/MakeaCommmentView.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import(/* webpackChunkName: "about" */ '../views/AdminPanelView.vue')
   }
 
 ]

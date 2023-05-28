@@ -1,5 +1,5 @@
 <template>
-    <div class="row align-items-center">
+    <div class="row align-items-center opacity-75">
         <div class="row justify-content-start">
             <div class="col-md-6">
                 <div class="card  mb-2">

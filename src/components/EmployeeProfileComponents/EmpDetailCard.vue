@@ -4,10 +4,12 @@
             <span class="mask bg-dark opacity-6"></span>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center mx-auto my-auto">
-                        <h1 class="text-white mt-5">Emir Taha Karcı</h1>
-                        <p class="lead mb-4 text-white opacity-8">Yazılım Geliştiricisi</p>
-                        <button class="btn btn-light btn-white-black">Yorum Yap</button>
+                    <div class="col-lg-8 text-center mx-auto my-auto" v-for="(member, index) in members" :key="index">
+                        <h1 class="text-white mt-5">{{member.name }}</h1>
+                        <p class="lead mb-4 text-white opacity-8">{{member.title }}</p>
+                        <router-link to="/makeacomment">
+                            <button class="btn btn-light btn-white-black">Yorum Yap</button>
+                        </router-link>
                         <h6 class="text-white mb-2 mt-5">Find us on</h6>
                         <div class="d-flex justify-content-center mb-5">
                             <a href="javascript:;"><i class="fab fa-linkedin text-lg text-white me-4"></i></a>
@@ -21,7 +23,19 @@
     </header>
 </template>
 <script>
-
+export default {
+    data() {
+        return {
+            members: [
+                {
+                    name: "Emma Roberts",
+                    title: "UI Designer",
+                
+                },
+            ],
+        };
+    },
+};
 
 
 </script>

@@ -23,18 +23,19 @@
         <div class="card bg-dark">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <a class="d-block blur-shadow-image">
-              <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+              <img
+                src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
                 alt="img-colored-shadow" class="img-fluid border-radius-lg">
             </a>
           </div>
-          <div class="card-body text-center">
+          <div class="card-body text-center" v-for="(member, index) in members" :key="index">
             <h5 class="font-weight-normal">
-              <a href="#" class="text-light">Emir Taha Karcı</a>
+              <a href="#" class="text-light" >{{ member.name }}</a>
             </h5>
             <p class="mb-0">
-              Artist is a term applied to a person who engages in an activity deemed to be an art.
+              {{member.description}}
             </p>
-            <button type="button" class="btn bg-gradient-info btn-sm mb-0 mt-3">Yazılım Geliştiricisi</button>
+            <button type="button" class="btn bg-gradient-info btn-sm mb-0 mt-3">{{member.title}}</button>
           </div>
         </div>
       </div>
@@ -44,10 +45,19 @@
 
 <script>
 export default {
+
   data() {
     return {
-      commentCount: 123,
+      commentCount: 1223,
       receivedCommentCount: 112,
+      members: [
+        {
+          name: "Emma Roberts",
+          title: "UI Designer",
+          description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
+
+        },
+      ],
     };
   },
 };
