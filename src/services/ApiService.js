@@ -22,7 +22,7 @@ class ApiService {
         }
 
         if (this.authToken) {
-            headers.Authorization = `Bearer ${this.authToken}`
+            headers.Authorization = `${this.authToken}`
         }
 
         const options = {
