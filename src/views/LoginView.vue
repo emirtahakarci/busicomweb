@@ -7,14 +7,16 @@
               <h3 class="text-center">Giriş Yap</h3>
             </div>
             <div class="card-body">
-              <form @submit.prevent="submitForm">
+              <form @submit.prevent="submitForm" @keydown="resetErrors">
                 <div class="form-group">
                   <label for="username">Kullanıcı Adı</label>
                   <input type="text" class="form-control" id="username" v-model="username">
+                  <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
                 </div>
                 <div class="form-group">
                   <label for="password">Şifre</label>
                   <input type="password" class="form-control" id="password" v-model="password">
+                  <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
                 </div>
                 <div class="form-check">
                   <input type="checkbox" class="form-check-input" id="rememberMe" v-model="rememberMe">
@@ -27,32 +29,47 @@
         </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        username: '',
-        password: '',
-        rememberMe: false
-      };
-    },
-    methods: {
-      submitForm() {
-        // burada formun gönderilmesi ve doğrulama işlemleri yapılabilir
+</template>
+<script>
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+      rememberMe: false,
+      errors: {} // Hata mesajlarını içerecek nesne
+    };
+  },
+  methods: {
+    submitForm() {
+      // Doğrulama işlemlerini burada yapabilirsiniz
+      this.errors = {}; // Hataları sıfırla
+      
+      if (!this.username) {
+        this.errors.username = 'Kullanıcı adı gereklidir.';
+      }
+      
+      if (!this.password) {
+        this.errors.password = 'Şifre gereklidir.';
+      }
+      
+      // Hata kontrolü
+      if (Object.keys(this.errors).length === 0) {
+        // Hata yok, formu gönder
         console.log('username:', this.username);
         console.log('password:', this.password);
         console.log('rememberMe:', this.rememberMe);
       }
+    },
+    resetErrors() {
+      this.errors = {}; // Hataları sıfırla herhangi bir tuşa basıldığında
     }
-  };
-  </script>
-  
-  <style>
-  /* istediğiniz CSS stillerini buraya ekleyebilirsiniz */
-  .bg-opacity-85 {
+  }
+};
+</script>
+<style>
+/* istediğiniz CSS stillerini buraya ekleyebilirsiniz */
+.bg-opacity-85 {
   opacity: 0.85;
 }
-  </style>
-  
+</style>
