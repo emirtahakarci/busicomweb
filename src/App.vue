@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg  navbar-dark mb-3">
+    <nav class="navbar navbar-expand-lg  bg-light bg-opacity-75 mb-3 opacity-75 shadow">
       <div class="container ">
         <router-link class="navbar-brand" to="/">My App</router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,10 +32,9 @@
       </div>
     </nav>
     <div class="container">
-
       <router-view></router-view>
     </div>
-    <footer class="bg-light py-3 opacity-75">
+    <footer class="bg-light bg-opacity-75 py-3 mt-3">
       <div class="container">
         <p>&copy; {{ currentYear }} My App</p>
       </div>
@@ -57,7 +56,7 @@ export default {
 <style>
 /* Add any custom CSS styles here */
 body {
-  background-image: url("assets/images/background.png");
+  background-image: url("assets/images/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

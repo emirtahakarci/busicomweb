@@ -1,5 +1,6 @@
 <template>
-  <div class="container bg-light mb-5 pb-5" style="opacity: 0.85">
+  <div class="container bg-light p-5 mb-5 pb-5" style="opacity: 0.85">
+    <div class="row shadow">
     <h1>User Comments</h1>
     <div class="form-group">
       <input type="text" v-model="searchKeyword" class="form-control" placeholder="Search" @input="filterComments">
@@ -26,6 +27,7 @@
       </tbody>
     </table>
   </div>
+</div>
 </template>
 
 <script>

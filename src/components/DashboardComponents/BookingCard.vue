@@ -1,12 +1,12 @@
 <template>
-    <div class="row align-items-center opacity-75">
+    <div class="row align-items-center opacity-75 m-5">
         <div class="row justify-content-start">
             <div class="col-md-6">
                 <div class="card  mb-2">
                     <div class="card">
                         <div class="card-header p-3 pt-2 position-relative">
                             <div
-                                class="icon icon-lg icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                class="icon icon-lg icon-shape bg-gradient-dark  shadow text-center border-radius-xl mt-n4 position-absolute">
                                 <i class="material-icons opacity-10">weekend</i>
                             </div>
                             <div class="text-end pt-1">
@@ -22,7 +22,7 @@
                     <div class="card">
                         <div class="card-header p-3 pt-2 position-relative">
                             <div
-                                class="icon icon-lg icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                class="icon icon-lg icon-shape bg-gradient-dark  shadow text-center border-radius-xl mt-n4 position-absolute">
                                 <i class="material-icons opacity-10">weekend</i>
                             </div>
                             <div class="text-end pt-1">
@@ -40,7 +40,7 @@
                     <div class="card">
                         <div class="card-header p-3 pt-2 position-relative">
                             <div
-                                class="icon icon-lg icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                class="icon icon-lg icon-shape bg-gradient-dark  shadow text-center border-radius-xl mt-n4 position-absolute">
                                 <i class="material-icons opacity-10">weekend</i>
                             </div>
                             <div class="text-end pt-1">
@@ -56,7 +56,7 @@
                     <div class="card">
                         <div class="card-header p-3 pt-2 position-relative">
                             <div
-                                class="icon icon-lg icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                                class="icon icon-lg icon-shape bg-gradient-dark  shadow text-center border-radius-xl mt-n4 position-absolute">
                                 <i class="material-icons opacity-10">weekend</i>
                             </div>
                             <div class="text-end pt-1">

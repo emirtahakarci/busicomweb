@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-dark text-light">
+  <div class="container-fluid bg-light bg-opacity-75 text-light p-5">
     <div class="row align-items-center">
       <div class="col-lg-6">
         <div class="row justify-content-start">
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="col-lg-4 ms-auto mt-lg-0 mt-4">
-        <div class="card bg-dark">
+        <div class="card bg-light bg-opacity-75">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <a class="d-block blur-shadow-image">
               <img

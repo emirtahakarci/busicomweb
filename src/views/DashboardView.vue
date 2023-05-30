@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark bg-opacity-75 m-auto">
+  <div class="bg-light bg-opacity-75 p-5 rounded shadow m-auto text-secondary-emphasis">
   <graphics-card></graphics-card>
 <booking-card totalCommentCount="125" :personelCount="245" :totalCommentCountForYou="123" :totalCommentCountByYou="321" />
 <default-card></default-card>

@@ -1,8 +1,8 @@
 <template>
-  <div class="container-fluid bg-dark bg-opacity-85"> 
-    <div class="row justify-content-center align-items-center min-vh-100">
+  <div class="container-fluid bg-light bg-opacity-75 bg-opacity-85"> 
+    <div class="row justify-content-center align-items-center min-vh-100 shadow">
       <div class="col-md-6 col-lg-4">
-        <div class="card text-white bg-secondary mb-3">
+        <div class="card text-secondary-emphasis bg-light mb-3">
           <div class="card-header">
             <h3 class="text-center">Şifre Güncelle</h3>
           </div>
@@ -67,6 +67,12 @@ export default {
         console.log('currentPassword:', this.currentPassword);
         console.log('newPassword:', this.newPassword);
         console.log('confirmPassword:', this.confirmPassword);
+        console.log({
+          currentPassword: this.currentPassword,
+          newPassword: this.newPassword,
+          confirmPassword: this.confirmPassword,
+
+        });
       }
     },
     clearErrors() {

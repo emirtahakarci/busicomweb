@@ -1,7 +1,7 @@
 <template>
-   <div class="bg-dark bg-opacity-75 m-auto">
+   <div class="bg-light bg-opacity-75 p-5 rounded shadow m-auto">
     <div>
-      <div class="about-us bg-opacity-75 bg-light pt-5 pb-3">
+      <div class="about-us bg-opacity-75  pt-5 pb-3">
         <div class="container">
           <h2 class="text-center mb-4">Hakkımızda</h2>
           <div class="row">

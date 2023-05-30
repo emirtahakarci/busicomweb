@@ -1,14 +1,14 @@
 <template>
     <div class="comment-section">
-        <div class="row bg-dark opacity-8">
-            <header class="bg-dark">
+        <div class="row bg-light bg-opacity-75 opacity-8">
+            <header class="bg-light bg-opacity-75">
                 <div class="page-header min-vh-75" :style="{ 'background-image': 'url(img/bg9.jpg)' }">
                     <span class="mask"></span>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8 text-center mx-auto my-auto">
-                                <h1 class="text-white mt-5">Emir Taha Karcı</h1>
-                                <p class="lead mb-4 text-white opacity-9">Yazılım Geliştiricisi</p>
+                                <h1 class="text-secondary-emphasis mt-5">Emir Taha Karcı</h1>
+                                <p class="lead mb-4 text-secondary-emphasis opacity-9">Yazılım Geliştiricisi</p>
                             </div>
                         </div>
                     </div>
@@ -16,17 +16,17 @@
             </header>
             <div class="col-md-12">
                 <div class="comment-form">
-                    <h2 class="text-white">Yorum Yap</h2>
+                    <h2 class="text-secondary-emphasis">Yorum Yap</h2>
                     <form @submit.prevent="submitComment" class="needs-validation" novalidate>
                         <div class="form-group">
-                            <label for="name" class="text-white">Konu:</label>
+                            <label for="name" class="text-secondary-emphasis">Konu:</label>
                             <input v-model="name" type="text" class="form-control" id="name" required>
-                            <div class="invalid-feedback text-white">Lütfen konunuzu girin.</div>
+                            <div class="invalid-feedback text-secondary-emphasis">Lütfen konunuzu girin.</div>
                         </div>
                         <div class="form-group">
-                            <label for="comment" class="text-white">Yorumunuz:</label>
+                            <label for="comment" class="text-secondary-emphasis">Yorumunuz:</label>
                             <textarea v-model="comment" class="form-control" id="comment" required></textarea>
-                            <div class="invalid-feedback text-white">Lütfen bir yorum girin.</div>
+                            <div class="invalid-feedback text-secondary-emphasis">Lütfen bir yorum girin.</div>
                         </div>
                         <button type="submit" class="btn btn-primary">Gönder</button>
                     </form>
@@ -81,7 +81,7 @@ export default {
     opacity: 0.85;
 }
 
-.text-white {
+.text-secondary-emphasis {
     color: white;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
-  <div class="container bg-light mb-5 pb-5" style="opacity: 0.85">
+  <div class="container bg-light p-5  mb-5 " style="opacity: 0.85">
+    <div class="row shadow">
     <h1>Admin Panel Kullanıcı ekle sil</h1>
 
     <div class="form-group">
@@ -64,6 +65,8 @@
     </form>
 
     <button class="btn btn-primary mt-4" @click="showNextUsers">Show Next Users</button>
+    
+  </div>
   </div>
 </template>
 
@@ -142,6 +145,9 @@ export default {
     },
     showNextUsers() {
       this.shownUsers += 5;
+    },
+    showBeforetUsers() {
+      this.shownUsers -= 5;
     },
   },
 };

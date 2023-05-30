@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-dark bg-opacity-75">
+  <div class="container-fluid bg-light bg-opacity-75 p-5 rounded shadow">
     <div class="row">
       <div class="col-md-6">
         <h2 class="text-light mb-4">Grafik 1</h2>
