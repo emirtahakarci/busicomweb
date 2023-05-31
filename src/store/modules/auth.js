@@ -31,7 +31,7 @@ const mutations = {
 const actions = {
   async login({ commit }, credentials) {
     const response = await ApiService.post('/auth/login', credentials)
-
+    
     commit('setUser', response.user)
     commit('setToken', response.token)
 
@@ -43,13 +43,6 @@ const actions = {
 
     commit('logout')
   },
-
-  async refresh({ commit, state }) {
-    const response = await ApiService.post('/auth/refresh', { token: state.token })
-
-    commit('setUser', response.user)
-    commit('setToken', response.token)
-  }
 }
 
 export default {

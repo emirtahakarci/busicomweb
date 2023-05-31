@@ -33,10 +33,13 @@
   </section>
 </template>
 <script>
+import WorkerService from '@/services/WorkerService';
+
 export default {
   name: "DefaultCard",
   data() {
     return {
+      workerAllData:{},
       members: [
         {
           name: "Emma Roberts",
@@ -62,8 +65,16 @@ export default {
           description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
           image: "https://picsum.photos/200/200?random=4",
         },
+        
       ],
     };
+  },
+  created() {
+   
+      WorkerService.getAllWorker()
+      .then((result) => {
+        this.workerData =result
+      })
   },
 };
 </script>

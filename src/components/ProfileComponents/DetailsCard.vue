@@ -23,10 +23,15 @@
     </header>
 </template>
 <script>
+import WorkerService from '@/services/WorkerService';
+
 
 export default {
+  
   data() {
     return {
+      workersData:{},
+
       members: [
         {
           name: "Emma Roberts",
@@ -37,6 +42,13 @@ export default {
       ],
     };
   },
+  created() {
+      WorkerService.getWorker()
+      .then((result) => {
+        this.workerData =result
+      })
+  },
+
 };
 </script>
 <style>

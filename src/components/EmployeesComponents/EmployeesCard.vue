@@ -41,10 +41,13 @@
   </div>
 </template>
 <script>
+import WorkerService from '@/services/WorkerService';
 
 export default {
   data() {
     return {
+      workersData:{},
+
       cards: [
         { id: 1, name: "John Doe", description: "Lorem ipsum dolor sit amet", job: "Developer", image: "https://via.placeholder.com/150" },
         { id: 2, name: "Jane Doe", description: "Lorem ipsum dolor sit amet", job: "Designer", image: "https://via.placeholder.com/150" },
@@ -53,6 +56,12 @@ export default {
       ],
       searchText: "",
     };
+  },
+  created() {
+      WorkerService.getAllWorkers()
+      .then((result) => {
+        this.workersData =result
+      })
   },
   computed: {
     filteredCards() {

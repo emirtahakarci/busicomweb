@@ -36,9 +36,13 @@
   </template>
   
   <script>
+import CommentService from '@/services/CommentService';
+
   export default {
     data() {
       return {
+      userComment:{},
+
         cards: [
           { id: 1, name: "John Doe", comment: "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet", job: "Developer", image: "https://via.placeholder.com/150" },
           { id: 2, name: "Jane Doe", comment: "Lorem ipsum dolor sit amet", job: "Designer", image: "https://via.placeholder.com/150" },
@@ -48,6 +52,12 @@
         searchText: "",
       };
     },
+    created() {
+      CommentService.getUserComment()
+      .then((result) => {
+        this.userComment =result
+      })
+  },
     computed: {
       filteredCards() {
         return this.cards.filter((card) => card.name.toLowerCase().includes(this.searchText.toLowerCase()));

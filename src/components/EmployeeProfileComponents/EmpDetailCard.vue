@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center mx-auto my-auto" v-for="(member, index) in members" :key="index">
-                        <h1 class="text-secondary-emphasis mt-5">{{member.name }}</h1>
-                        <p class="lead mb-4 text-secondary-emphasis opacity-8">{{member.title }}</p>
+                        <h1 class="text-secondary-emphasis mt-5">{{ member.name }}</h1>
+                        <p class="lead mb-4 text-secondary-emphasis opacity-8">{{ member.title }}</p>
                         <router-link to="/makeacomment">
                             <button class="btn btn-light btn-white-black">Yorum Yap</button>
                         </router-link>
@@ -23,17 +23,26 @@
     </header>
 </template>
 <script>
+import WorkerService from '@/services/WorkerService';
+
 export default {
     data() {
         return {
+            workerData: {},
             members: [
                 {
                     name: "Emma Roberts",
                     title: "UI Designer",
-                
+
                 },
             ],
         };
+    },
+    created() {
+        WorkerService.getWorker()
+            .then((result) => {
+                this.workerData = result
+            })
     },
 };
 

@@ -6,24 +6,16 @@ class WorkerService {
   }
 
   async getAllWorkers() {
-    const response = await ApiService.get(this.endpoint)
+    const response = await ApiService.get(this.endpoint + '/getAllWorkers')
+    return response
+  }
+  async getAllWorkersCount() {
+    const response = await ApiService.get(this.endpoint + '/getAllWorkers')
     return response
   }
 
-  async createWorker(workerData) {
-    const response = await ApiService.post(this.endpoint, workerData)
-    return response
-  }
-
-  async updateWorker(workerId, workerData) {
-    const url = `${this.endpoint}/${workerId}`
-    const response = await ApiService.put(url, workerData)
-    return response
-  }
-
-  async deleteWorker(workerId) {
-    const url = `${this.endpoint}/${workerId}`
-    const response = await ApiService.delete(url)
+  async getWorker(workerId) {
+    const response = await ApiService.get(this.endpoint + 'getWorker' + "?workerId=" + workerId)
     return response
   }
 }

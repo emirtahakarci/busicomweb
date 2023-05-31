@@ -1,18 +1,20 @@
 <template>
-  <div class="container-fluid bg-light bg-opacity-75 text-light p-5">
+  <div class="container-fluid bg-light bg-opacity-75 text-light p-5" v-if="userCommentCounts">
     <div class="row align-items-center">
       <div class="col-lg-6">
         <div class="row justify-content-start">
           <div class="col-md-6">
             <div class="info">
-              <h1 class="text-gradient text-info" :data-countTo="commentCount">{{ commentCount }}</h1>
+              <h1 class="text-gradient text-info" :data-countTo="userCommentCounts.commentCount">{{
+                userCommentCounts.commentCount }}</h1>
               <h5>Yaptığı Yorum Sayısı</h5>
               <p>Ekip arkadaşınız toplam yaptığı yorum saysını gösterir.</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="info">
-              <h1 class="text-gradient text-info" :data-countTo="receivedCommentCount">{{ receivedCommentCount }}</h1>
+              <h1 class="text-gradient text-info" :data-countTo="userCommentCounts.receivedCommentCount">{{
+                userCommentCounts.receivedCommentCount }}</h1>
               <h5>Yapılan Yorum Sayısı</h5>
               <p>Ekip arkadaşınıza yapılan toplam yorum sayısını gösterir.</p>
             </div>
@@ -30,12 +32,12 @@
           </div>
           <div class="card-body text-center" v-for="(member, index) in members" :key="index">
             <h5 class="font-weight-normal">
-              <a href="#" class="text-light" >{{ member.name }}</a>
+              <a href="#" class="text-light">{{ member.name }}</a>
             </h5>
             <p class="mb-0">
-              {{member.description}}
+              {{ member.description }}
             </p>
-            <button type="button" class="btn bg-gradient-info btn-sm mb-0 mt-3">{{member.title}}</button>
+            <button type="button" class="btn bg-gradient-info btn-sm mb-0 mt-3">{{ member.title }}</button>
           </div>
         </div>
       </div>
@@ -44,12 +46,15 @@
 </template>
 
 <script>
+import CommentService from '@/services/CommentService';
+import WorkerService from '@/services/WorkerService';
+
 export default {
 
   data() {
     return {
-      commentCount: 1223,
-      receivedCommentCount: 112,
+      userCommentCounts: {},
+      workerData:{},
       members: [
         {
           name: "Emma Roberts",
@@ -60,6 +65,19 @@ export default {
       ],
     };
   },
+  created() {
+    CommentService.getUserCommentCounts()
+      .then((result) => {
+        this.userCommentCounts = result
+      })
+      WorkerService.getWorker()
+      .then((result) => {
+        this.workerData =result
+      })
+  },
+
+
+
 };
 </script>
 

@@ -22,7 +22,7 @@
                   <input type="checkbox" class="form-check-input" id="rememberMe" v-model="rememberMe">
                   <label class="form-check-label" for="rememberMe">Beni Hatırla</label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-4">Giriş Yap</button>
+                <button type="submit" class="btn btn-primary btn-block mt-4" @click="submitForm()">Giriş Yap</button>
 
               </form>
             </div>
@@ -32,6 +32,8 @@
     </div>
 </template>
 <script>
+import {  mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -43,6 +45,7 @@ export default {
   },
  
   methods: {
+    ...mapActions(['login']),
     submitForm() {
       // Doğrulama işlemlerini burada yapabilirsiniz
       this.errors = {}; // Hataları sıfırla
@@ -59,9 +62,22 @@ export default {
       // Hata kontrolü
       if (Object.keys(this.errors).length === 0) {
         // Hata yok, formu gönder
+
         console.log('username:', this.username);
         console.log('password:', this.password);
         console.log('rememberMe:', this.rememberMe);
+
+        try {
+          this.login({
+          username: this.username,
+          password: this.password
+          })
+
+          this.$router.push('dashboard')
+        } catch (error) {
+          alert(error.message)
+        }
+        
 
       }
     },

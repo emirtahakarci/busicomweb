@@ -44,30 +44,43 @@
 </template>
   
 <script>
+import CommentService from '@/services/CommentService';
+import WorkerService from '@/services/WorkerService';
 
 export default {
+
   data() {
     return {
-      commentCount: 123,
-      receivedCommentCount: 112,
+      userCommentCountsByYou: {},
+      userCommentCountsForYou: {},
+
+      workerData:{},
       members: [
         {
           name: "Emma Roberts",
           title: "UI Designer",
           description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
 
-
         },
       ],
     };
   },
+  created() {
+    CommentService.getUserCommentCountsByYou()
+      .then((result) => {
+        this.userCommentCountsByYou = result
+      })
+      CommentService.getUserCommentCountsForYou()
+      .then((result) => {
+        this.userCommentCountsForYou = result
+      })
+      WorkerService.getWorker()
+      .then((result) => {
+        this.workerData =result
+      })
+  },
+
+
+
 };
 </script>
-  
-<style>
-.text-gradient {
-  background-image: linear-gradient(to right, #ff9966, #ff5e62);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-</style>

@@ -72,8 +72,32 @@
 </template>
   
 <script>
+
+import CommentService from '@/services/CommentService';
+import WorkerService from '@/services/WorkerService';
 export default {
     name: "BookingCard",
+    data() {
+        return {
+            userCommentCountsForYou: {},
+            userCommentCountsByYou: {},
+            workerCount: {},
+        };
+    },
+    created() {
+        CommentService.getUserCommentCountsByYou()
+            .then((result) => {
+                this.userCommentCountsByYou = result
+            })
+        CommentService.getUserCommentCountsForYou()
+            .then((result) => {
+                this.userCommentCountsForYou = result
+            })
+        WorkerService.getAllWorkerCount()
+            .then((result) => {
+                this.workerCount = result
+            })
+    },
     props: {
         totalCommentCount: {
             type: Number,

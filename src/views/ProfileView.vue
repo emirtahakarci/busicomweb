@@ -1,4 +1,5 @@
 <template>
+  
   <details-card></details-card>
   <dashboard-card></dashboard-card>
 <default-card></default-card>
