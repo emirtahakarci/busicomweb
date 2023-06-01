@@ -1,19 +1,8 @@
-import { createRouter, createMemoryHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  {
-    path: '/dashboard',
     name: 'dashboard',
     component: () => import(/* webpackChunkName: "about" */ '../views/DashboardView.vue')
   },
@@ -56,22 +45,11 @@ const routes = [
     path: '/makeacomment',
     name: 'makeacomment',
     component: () => import(/* webpackChunkName: "about" */ '../views/MakeaCommmentView.vue')
-  },
-  {
-    path: '/admin',
-    name: 'admin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AdminPanelView.vue')
-  },
-  {
-    path: '/adminmessage',
-    name: 'adminmessage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AdminPanelMessageView.vue')
   }
-
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(process.env.BASE_URL),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 

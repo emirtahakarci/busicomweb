@@ -18,6 +18,10 @@ class WorkerService {
     const response = await ApiService.get(this.endpoint + 'getWorker' + "?workerId=" + workerId)
     return response
   }
+  async getUserWorker() {
+    const response = await ApiService.get(this.endpoint + 'getUserWorker' + "?accessToken=" + localStorage.getItem('token'))
+    return response
+  }
 }
 
 export default new WorkerService()

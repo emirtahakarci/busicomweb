@@ -1,14 +1,14 @@
 <template>
   <div class="bg-light bg-opacity-75 p-5 rounded shadow m-auto text-secondary-emphasis">
     <div class="container-fluid bg-light bg-opacity-75 p-5 rounded shadow">
-      <div class="row">
+      <div class="row ">
         <div class="col-md-6">
-          <h2 class="text-light mb-4">Grafik 1</h2>
+          <h2 class="text-gray-300 mb-4">Yapılan Yorum Tablosu</h2>
           <Bar id="my-bar-chart" :options="chartOptions" :data="chartData" />
 
         </div>
         <div class="col-md-6">
-          <h2 class="text-light mb-4">Grafik 2</h2>
+          <h2 class="ext-gray-300 mb-4">Kullanıcı Sayısı Tablosu</h2>
           <Line id="my-line-chart" :options="chartOptions" :data="chartData" />
 
         </div>
@@ -85,8 +85,8 @@
         </div>
       </div>
     </div>
-    <section class="p-5 position-relative bg-light bg-opacity-75 mx-n3 ">
-      <div class="container shadow">
+    <section class="p-5 position-relative bg-light bg-opacity-75 mx-n3 shadow">
+      <div class="container ">
         <div class="row">
           <div class="col-md-8 text-start mb-5 mt-5">
             <h3 class="text-secondary-emphasis z-index-1 position-relative">Ekip Arkadaşlarınızdan Bazıları</h3>
@@ -209,29 +209,46 @@ export default {
     };
   },
   created() {
-
     WorkerService.getAllWorkers()
       .then((result) => {
         this.workerAllData = result.workerAllData
+      })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
       })
     CommentService.getUserCommentCountsByYou()
       .then((result) => {
         this.userCommentCountsByYou = result
       })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
+      })
     CommentService.getUserCommentCountsForYou()
       .then((result) => {
         this.userCommentCountsForYou = result
       })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
+      })
     WorkerService.getAllWorkersCount()
       .then((result) => {
         this.workerCount = result
+      })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
       })
   },
 };
 
 </script>
   
-<style>
-/* Add any custom CSS styles here */
-</style>
+<style>/* Add any custom CSS styles here */</style>
   

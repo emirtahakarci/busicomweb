@@ -12,10 +12,10 @@
             </router-link>
             <h6 class="text-secondary-emphasis mb-2 mt-5">Find us on</h6>
             <div class="d-flex justify-content-center mb-5">
-              <a href="javascript:;"><i class="fab fa-linkedin text-lg text-secondary-emphasis me-4"></i></a>
-              <a href="javascript:;"><i class="fab fa-instagram text-lg text-secondary-emphasis me-4"></i></a>
-              <a href="javascript:;"><i class="fab fa-google-plus text-lg text-secondary-emphasis"></i></a>
+              <a href="javascript:;"><i class="fab fa-google-plus text-lg text-secondary-emphasis me-4"></i></a>{{ member.mail }}
+              
             </div>
+            
           </div>
         </div>
       </div>
@@ -117,6 +117,7 @@ export default {
       memberss: [
         {
           name: "Emma Roberts",
+          mail:"ıvana@gmail.com",
           title: "UI Designer",
           description: "Artist is a term applied to a person who engages in an activity deemed to be an art.",
 
@@ -158,13 +159,28 @@ export default {
       .then((result) => {
         this.userCommentCountsByYou = result
       })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
+      })
     CommentService.getUserCommentCountsForYou()
       .then((result) => {
         this.userCommentCountsForYou = result
       })
-    WorkerService.getWorker()
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
+      })
+    WorkerService.getUserWorker()
       .then((result) => {
         this.workerData = result
+      })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
       })
   },
 };

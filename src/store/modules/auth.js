@@ -1,7 +1,6 @@
 import ApiService from '@/services/ApiService'
 
 const state = {
-  user: null,
   token: localStorage.getItem('token') || null
 }
 
@@ -12,10 +11,6 @@ const getters = {
 }
 
 const mutations = {
-  setUser(state, user) {
-    state.user = user
-  },
-
   setToken(state, token) {
     state.token = token
     localStorage.setItem('token', token)
@@ -32,7 +27,6 @@ const actions = {
   async login({ commit }, credentials) {
     const response = await ApiService.post('/auth/login', credentials)
     
-    commit('setUser', response.user)
     commit('setToken', response.token)
 
     return response

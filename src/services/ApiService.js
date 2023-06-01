@@ -15,6 +15,15 @@ class ApiService {
     }
 
     async request(method, url, data = null, headers = {}) {
+        if (!url.includes('auth')) {
+            const token = localStorage.getItem('token');
+            if (token) {
+                this.get('auth/check' + '?accessToken=' + token);
+            } else {
+                throw new Error('HTTP 401 Unauthorized')
+            }
+        }
+
         headers = {
             'Content-Type': 'application/json',
             ...this.headers,
