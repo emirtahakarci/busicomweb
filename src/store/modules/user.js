@@ -18,25 +18,25 @@ const mutations = {
 
 const actions = {
   async fetchUsers({ commit }) {
-    const response = await ApiService.get('/users')
+    const response = await ApiService.get('users')
 
     commit('setUsers', response)
   },
 
   async createUser({ dispatch }, user) {
-    await ApiService.post('/users', user)
+    await ApiService.post('users', user)
 
     dispatch('fetchUsers')
   },
 
   async updateUser({ dispatch }, { id, user }) {
-    await ApiService.put(`/users/${id}`, user)
+    await ApiService.put(`users/${id}`, user)
 
     dispatch('fetchUsers')
   },
 
   async deleteUser({ dispatch }, id) {
-    await ApiService.delete(`/users/${id}`)
+    await ApiService.delete(`users/${id}`)
 
     dispatch('fetchUsers')
   }

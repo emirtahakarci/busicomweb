@@ -2,36 +2,36 @@ import ApiService from './ApiService'
 
 class CommentService {
   constructor() {
-    this.endpoint = 'comments'
+    this.endpoint = 'comment'
   }
 
-  async getCommentDashboard() {
-    const response = await ApiService.get(this.endpoint + '/getCommentDashboard')
+  async getAllCommentCount() {
+    const response = await ApiService.get(this.endpoint + '/getCommentCount')
     return response
   }
-
-  async getUserCommentCounts() {
-    const response = await ApiService.get(this.endpoint + 'getUserCommentCounts')
-    return response
-  }
+  a
   async getUserCommentCountsForYou() {
-    const response = await ApiService.get(this.endpoint + 'getUserCommentCountsForYou'+ "?accessToken=" + localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getUserCommentCount' + "?accessToken=" + localStorage.getItem('token'))
     return response
   }
   async getWorkerCommentCountsForYou() {
-    const response = await ApiService.get(this.endpoint + 'getWorkerCommentCountsForYou')
+    const response = await ApiService.get(this.endpoint + '/getWorkerCommentCount')
     return response
   }
   async getUserCommentCountsByYou() {
-    const response = await ApiService.get(this.endpoint + 'getUserCommentCountsByYou' + "?accessToken=" + localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getMadeCommentCountByUser' + "?accessToken=" + localStorage.getItem('token'))
     return response
   }
   async getWorkerCommentCountsByYou() {
-    const response = await ApiService.get(this.endpoint + 'getWorkerCommentCountsByYou')
+    const response = await ApiService.get(this.endpoint + '/getMadeCommentCountByWorker')
     return response
   }
   async getUserComment() {
-    const response = await ApiService.get(this.endpoint + 'getUserComment')
+    const response = await ApiService.get(this.endpoint + '/getMadeComment' + "?accessToken=" + localStorage.getItem('token'))
+    return response
+  }
+  async getUserMakeComment(workerId, comment) {
+    const response = await ApiService.get(this.endpoint + '/getMadeComment' + "?accessToken=" + workerId + comment + localStorage.getItem('token'))
     return response
   }
 }

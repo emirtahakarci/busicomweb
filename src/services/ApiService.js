@@ -9,7 +9,7 @@ class ApiService {
         }
 
         const { apiUrl } = ApiService.config || {};
-        this.baseUrl = apiUrl || 'http://localhost:4010/';
+        this.baseUrl = apiUrl || 'https://api.teamtalkers.net/index.php/';
         this.headers = {};
         this.authToken = null;
     }
@@ -26,6 +26,7 @@ class ApiService {
 
         headers = {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://teamtalkers.net',
             ...this.headers,
             ...headers
         }

@@ -37,12 +37,25 @@
 </template>
 
 <script>
+import CommentService from '@/services/CommentService';
+
 export default {
     data() {
         return {
             name: '',
             comment: ''
         };
+    },
+    created() {
+        CommentService.getUserMakeComment()
+            .then((result) => {
+                this.UserMakeComment = result
+            })
+            .catch((error) => {
+                if (error.message.includes('401 Unauthorized')) {
+                    this.$router.push('/login')
+                }
+            })
     },
     methods: {
         submitComment() {

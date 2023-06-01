@@ -22,7 +22,7 @@
                 <input type="checkbox" class="form-check-input" id="rememberMe" v-model="rememberMe">
                 <label class="form-check-label" for="rememberMe">Beni Hatırla</label>
               </div>
-              <button type="submit" class="btn btn-primary btn-block mt-4" @click="submitForm()">Giriş Yap</button>
+              <button type="submit" class="btn btn-primary btn-block mt-4">Giriş Yap</button>
 
             </form>
           </div>
@@ -47,8 +47,8 @@ export default {
     
   },
   methods: {
-    ...mapActions(['login']),
-    submitForm() {
+    ...mapActions('auth', ['login']),
+    async submitForm() {
       // Doğrulama işlemlerini burada yapabilirsiniz
       this.errors = {}; // Hataları sıfırla
 
@@ -70,12 +70,13 @@ export default {
         console.log('rememberMe:', this.rememberMe);
 
         try {
-          this.login({
+          const response = this.login({
             username: this.username,
             password: this.password
           })
+          console.log(response)
 
-          this.$router.push('dashboard')
+          this.$router.push('/')
         } catch (error) {
           alert(error.message)
         }

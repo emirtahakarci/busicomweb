@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import WorkerService from '@/services/WorkerService';
+
 export default {
   data() {
     return {
@@ -41,8 +43,30 @@ export default {
       confirmPassword: '',
       currentPasswordError: '',
       newPasswordError: '',
-      confirmPasswordError: ''
+      confirmPasswordError: '',
+      workerResetPassword:{},
+      workerPassword:{}
     };
+  },
+  created(){
+    WorkerService.getUserWorkerResetPassword()
+      .then((result) => {
+        this.workerResetPassword = result
+      })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
+      })
+      WorkerService.getUserWorker()
+      .then((result) => {
+        this.workerPassword = result
+      })
+      .catch((error) => {
+        if (error.message.includes('401 Unauthorized')) {
+          this.$router.push('/login')
+        }
+      })
   },
   methods: {
     submitForm() {
