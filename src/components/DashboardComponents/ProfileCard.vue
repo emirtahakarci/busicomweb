@@ -39,7 +39,6 @@ export default {
   name: "DefaultCard",
   data() {
     return {
-      workerAllData:{},
       members: [
         {
           name: "Emma Roberts",
@@ -67,13 +66,15 @@ export default {
         },
         
       ],
+      workerAllData: [],
+
     };
   },
   created() {
    
       WorkerService.getAllWorker()
       .then((result) => {
-        this.workerData =result
+        this.workerAllData = result.workerAllData
       })
   },
 };

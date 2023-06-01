@@ -10,7 +10,7 @@ class WorkerService {
     return response
   }
   async getAllWorkersCount() {
-    const response = await ApiService.get(this.endpoint + '/getAllWorkers')
+    const response = await ApiService.get(this.endpoint + '/getAllWorkersCount')
     return response
   }
 
