@@ -33,7 +33,7 @@
   </section>
 </template>
 <script>
-import WorkerService from '@/services/WorkerService';
+// import WorkerService from '@/services/WorkerService';
 
 export default {
   name: "DefaultCard",
@@ -71,11 +71,10 @@ export default {
     };
   },
   created() {
-   
-      WorkerService.getAllWorker()
-      .then((result) => {
-        this.workerAllData = result.workerAllData
-      })
+      // WorkerService.getAllWorker()
+      // .then((result) => {
+      //   this.workerAllData = result.workerAllData
+      // })
   },
 };
 </script>

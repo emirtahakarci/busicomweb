@@ -146,8 +146,8 @@ ChartJS.register(CategoryScale,
   Title,
   Tooltip,
   Legend)
-import WorkerService from '@/services/WorkerService';
-import CommentService from '@/services/CommentService';
+// import WorkerService from '@/services/WorkerService';
+// import CommentService from '@/services/CommentService';
 
 
 export default {
@@ -209,46 +209,48 @@ export default {
     };
   },
   created() {
-    WorkerService.getAllWorkers()
-      .then((result) => {
-        this.workerAllData = result.workerAllData
-      })
-      .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
-    CommentService.getUserCommentCountsByYou()
-      .then((result) => {
-        this.userCommentCountsByYou = result
-      })
-      .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
-    CommentService.getUserCommentCountsForYou()
-      .then((result) => {
-        this.userCommentCountsForYou = result
-      })
-      .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
-    WorkerService.getAllWorkersCount()
-      .then((result) => {
-        this.workerCount = result
-      })
-      .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
+    // WorkerService.getAllWorkers()
+    //   .then((result) => {
+    //     this.workerAllData = result.workerAllData
+    //   })
+    //   .catch((error) => {
+    //     if (error.message.includes('401 Unauthorized')) {
+    //       this.$router.push('/login')
+    //     }
+    //   })
+    // CommentService.getUserCommentCountsByYou()
+    //   .then((result) => {
+    //     this.userCommentCountsByYou = result
+    //   })
+    //   .catch((error) => {
+    //     if (error.message.includes('401 Unauthorized')) {
+    //       this.$router.push('/login')
+    //     }
+    //   })
+    // CommentService.getUserCommentCountsForYou()
+    //   .then((result) => {
+    //     this.userCommentCountsForYou = result
+    //   })
+    //   .catch((error) => {
+    //     if (error.message.includes('401 Unauthorized')) {
+    //       this.$router.push('/login')
+    //     }
+    //   })
+    // WorkerService.getAllWorkersCount()
+    //   .then((result) => {
+    //     this.workerCount = result
+    //   })
+    //   .catch((error) => {
+    //     if (error.message.includes('401 Unauthorized')) {
+    //       this.$router.push('/login')
+    //     }
+    //   })
   },
 };
 
 </script>
   
-<style>/* Add any custom CSS styles here */</style>
+<style>
+/* Add any custom CSS styles here */
+</style>
   

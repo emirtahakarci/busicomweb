@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import WorkerService from "@/services/WorkerService";
+// import WorkerService from "@/services/WorkerService";
 
 export default {
   data() {
@@ -83,17 +83,16 @@ export default {
       searchText: ""
     };
   },
-  created() {
-    WorkerService.getAllWorkers().then(result => {
-      this.workersData = result;
-    })
-    .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
-    
-  },
+  // created() {
+  //   WorkerService.getAllWorkers().then(result => {
+  //     this.workersData = result;
+  //   })
+  //   .catch((error) => {
+  //       if (error.message.includes('401 Unauthorized')) {
+  //         this.$router.push('/login')
+  //       }
+  //     })
+  // },
   computed: {
     filteredCards() {
       return this.cards.filter(card =>

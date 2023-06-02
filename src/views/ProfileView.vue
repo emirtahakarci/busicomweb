@@ -100,8 +100,8 @@
 </template>
       
 <script>
-import CommentService from '@/services/CommentService';
-import WorkerService from '@/services/WorkerService';
+// import CommentService from '@/services/CommentService';
+// import WorkerService from '@/services/WorkerService';
 
 
 export default {
@@ -155,33 +155,33 @@ export default {
     };
   },
   created() {
-    CommentService.getUserCommentCountsByYou()
-      .then((result) => {
-        this.userCommentCountsByYou = result
-      })
-      .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
-    CommentService.getUserCommentCountsForYou()
-      .then((result) => {
-        this.userCommentCountsForYou = result
-      })
-      .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
-    WorkerService.getUserWorker()
-      .then((result) => {
-        this.workerData = result
-      })
-      .catch((error) => {
-        if (error.message.includes('401 Unauthorized')) {
-          this.$router.push('/login')
-        }
-      })
+    // CommentService.getUserCommentCountsByYou()
+    //   .then((result) => {
+    //     this.userCommentCountsByYou = result
+    //   })
+    //   .catch((error) => {
+    //     if (error.message.includes('401 Unauthorized')) {
+    //       this.$router.push('/login')
+    //     }
+    //   })
+    // CommentService.getUserCommentCountsForYou()
+    //   .then((result) => {
+    //     this.userCommentCountsForYou = result
+    //   })
+    //   .catch((error) => {
+    //     if (error.message.includes('401 Unauthorized')) {
+    //       this.$router.push('/login')
+    //     }
+    //   })
+    // WorkerService.getUserWorker()
+    //   .then((result) => {
+    //     this.workerData = result
+    //   })
+    //   .catch((error) => {
+    //     if (error.message.includes('401 Unauthorized')) {
+    //       this.$router.push('/login')
+    //     }
+    //   })
   },
 };
 

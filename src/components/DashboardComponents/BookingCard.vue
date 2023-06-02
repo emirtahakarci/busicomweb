@@ -73,8 +73,8 @@
   
 <script>
 
-import CommentService from '@/services/CommentService';
-import WorkerService from '@/services/WorkerService';
+// import CommentService from '@/services/CommentService';
+// import WorkerService from '@/services/WorkerService';
 export default {
     name: "BookingCard",
     data() {
@@ -85,18 +85,18 @@ export default {
         };
     },
     created() {
-        CommentService.getUserCommentCountsByYou()
-            .then((result) => {
-                this.userCommentCountsByYou = result
-            })
-        CommentService.getUserCommentCountsForYou()
-            .then((result) => {
-                this.userCommentCountsForYou = result
-            })
-        WorkerService.getAllWorkerCount()
-            .then((result) => {
-                this.workerCount = result
-            })
+        // CommentService.getUserCommentCountsByYou()
+        //     .then((result) => {
+        //         this.userCommentCountsByYou = result
+        //     })
+        // CommentService.getUserCommentCountsForYou()
+        //     .then((result) => {
+        //         this.userCommentCountsForYou = result
+        //     })
+        // WorkerService.getAllWorkerCount()
+        //     .then((result) => {
+        //         this.workerCount = result
+        //     })
     },
     props: {
         totalCommentCount: {
