@@ -44,7 +44,13 @@ export default {
     };
   },
   created() {
-    
+    if (sessionStorage.getItem("u_name") && sessionStorage.getItem("u_pass")) {
+      this.username = sessionStorage.getItem("u_name")
+      this.password = sessionStorage.getItem("u_pass")
+      this.submitForm().then(() => {
+        this.$router.push('/')
+      });
+    }
   },
   methods: {
     ...mapActions('auth', ['login']),
@@ -70,11 +76,18 @@ export default {
         console.log('rememberMe:', this.rememberMe);
 
         try {
-          const response = this.login({
+          this.login({
             username: this.username,
             password: this.password
           })
-          console.log(response)
+
+          if (this.rememberMe) {
+            sessionStorage.setItem("u_name", this.username)
+            sessionStorage.setItem("u_pass", this.password)
+          } else {
+            sessionStorage.removeItem("u_name")
+            sessionStorage.removeItem("u_pass")
+          }
 
           this.$router.push('/')
         } catch (error) {

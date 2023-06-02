@@ -1,7 +1,7 @@
 import ApiService from '@/services/ApiService'
 
 const state = {
-  token: localStorage.getItem('token') || null
+  token: sessionStorage.getItem('token') || null
 }
 
 const getters = {
@@ -13,13 +13,13 @@ const getters = {
 const mutations = {
   setToken(state, token) {
     state.token = token
-    localStorage.setItem('token', token)
+    sessionStorage.setItem('token', token)
   },
 
   logout(state) {
     state.user = null
     state.token = null
-    localStorage.removeItem('token')
+    sessionStorage.removeItem('token')
   }
 }
 

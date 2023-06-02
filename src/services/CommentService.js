@@ -11,7 +11,7 @@ class CommentService {
   }
   a
   async getUserCommentCountsForYou() {
-    const response = await ApiService.get(this.endpoint + '/getUserCommentCount' + "?accessToken=" + localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getUserCommentCount')
     return response
   }
   async getWorkerCommentCountsForYou() {
@@ -19,7 +19,7 @@ class CommentService {
     return response
   }
   async getUserCommentCountsByYou() {
-    const response = await ApiService.get(this.endpoint + '/getMadeCommentCountByUser' + "?accessToken=" + localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getMadeCommentCountByUser')
     return response
   }
   async getWorkerCommentCountsByYou() {
@@ -27,11 +27,11 @@ class CommentService {
     return response
   }
   async getUserComment() {
-    const response = await ApiService.get(this.endpoint + '/getMadeComment' + "?accessToken=" + localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getMadeComment')
     return response
   }
   async getUserMakeComment(workerId, comment) {
-    const response = await ApiService.get(this.endpoint + '/getMadeComment' + "?accessToken=" + workerId + comment + localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getMadeComment' + "?workerId=" + workerId + "&comment=" + comment)
     return response
   }
 }

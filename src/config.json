@@ -1,3 +1,3 @@
 {
-    "apiUrl": "https://api.teamtalkers.net/index.php/"
+    "apiUrl": "http://localhost/teamtalkers_api/index.php/"
 }

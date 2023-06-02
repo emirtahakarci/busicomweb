@@ -19,11 +19,11 @@ class WorkerService {
     return response
   }
   async getUserWorker() {
-    const response = await ApiService.get(this.endpoint + '/getUserWorker' + "?accessToken=" + localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getUserWorker')
     return response
   }
   async getUserWorkerResetPassword(newPassword) {
-    const response = await ApiService.get(this.endpoint + '/getUserWorkerResetPassword' + "?accessToken=" +newPassword +localStorage.getItem('token'))
+    const response = await ApiService.get(this.endpoint + '/getUserWorkerResetPassword' + "?newPassword=" +newPassword)
     return response
   }
 }

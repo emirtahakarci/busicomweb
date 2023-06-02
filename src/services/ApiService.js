@@ -1,86 +1,82 @@
-import config from '../config.json'
+import axios from 'axios';
+import config from '../config.json';
 
 class ApiService {
-    static config = null;
+  static config = null;
 
-    constructor() {
-        if (!ApiService.config) {
-            ApiService.config = config;
-        }
-
-        const { apiUrl } = ApiService.config || {};
-        this.baseUrl = apiUrl || 'https://api.teamtalkers.net/index.php/';
-        this.headers = {};
-        this.authToken = null;
+  constructor() {
+    if (!ApiService.config) {
+      ApiService.config = config;
     }
 
-    async request(method, url, data = null, headers = {}) {
-        if (!url.includes('auth')) {
-            const token = localStorage.getItem('token');
-            if (token) {
-                this.get('auth/check' + '?accessToken=' + token);
-            } else {
-                throw new Error('HTTP 401 Unauthorized')
-            }
-        }
+    const { apiUrl } = ApiService.config || {};
+    this.baseUrl = apiUrl || 'http://localhost:4000/teamtalkers_api/';
+    this.headers = {};
+    this.authToken = null;
+  }
 
-        headers = {
-            'Content-Type': 'application/json',
-            ...this.headers,
-            ...headers
-        }
-
-        if (this.authToken) {
-            headers.Authorization = `${this.authToken}`
-        }
-
-        const options = {
-            method,
-            headers
-        }
-
-        if (data) {
-            options.body = JSON.stringify(data)
-        }
-
-        const response = await fetch(this.baseUrl + url, options)
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status} - ${response.statusText}`)
-        }
-
-        const responseData = await response.json()
-
-        return responseData
+  async request(method, url, data = null, headers = {}) {
+    if (!url.includes('auth')) {
+      const token = sessionStorage.getItem('token');
+      if (token) {
+        await this.get('auth/check');
+      } else {
+        throw new Error('HTTP 401 Unauthorized');
+      }
     }
 
-    async get(url, headers = {}) {
-        return this.request('GET', url, null, headers)
+    headers = {
+      'Content-Type': 'application/json',
+      ...this.headers,
+      ...headers,
+    };
+
+    if (this.authToken) {
+      headers.Authorization = `Bearer ${this.authToken}`;
     }
 
-    async post(url, data = {}, headers = {}) {
-        return this.request('POST', url, data, headers)
-    }
+    const options = {
+      method,
+      headers,
+      data: data ? JSON.stringify(data) : null,
+      url: this.baseUrl + url,
+    };
 
-    async put(url, data = {}, headers = {}) {
-        return this.request('PUT', url, data, headers)
+    try {
+      const response = await axios(options);
+      return response.data;
+    } catch (error) {
+      throw new Error(`HTTP ${error.response.status} - ${error.response.statusText}`);
     }
+  }
 
-    async delete(url, headers = {}) {
-        return this.request('DELETE', url, null, headers)
-    }
+  async get(url, headers = {}) {
+    return this.request('get', url, null, headers);
+  }
 
-    setBaseUrl(baseUrl) {
-        this.baseUrl = baseUrl
-    }
+  async post(url, data = {}, headers = {}) {
+    return this.request('post', url, data, headers);
+  }
 
-    setHeaders(headers) {
-        this.headers = headers
-    }
+  async put(url, data = {}, headers = {}) {
+    return this.request('put', url, data, headers);
+  }
 
-    setAuthToken(authToken) {
-        this.authToken = authToken
-    }
+  async delete(url, headers = {}) {
+    return this.request('delete', url, null, headers);
+  }
+
+  setBaseUrl(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
+
+  setHeaders(headers) {
+    this.headers = headers;
+  }
+
+  setAuthToken(authToken) {
+    this.authToken = authToken;
+  }
 }
 
-export default new ApiService()
+export default new ApiService();
